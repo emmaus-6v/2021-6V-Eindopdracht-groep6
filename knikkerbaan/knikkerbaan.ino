@@ -4,11 +4,11 @@ const int ldrPin = A0;
 
 void setup() {
   
-Serial.begin(9600);
+  Serial.begin(9600);
 
-pinMode(ledPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
 
-pinMode(ldrPin, INPUT);
+  pinMode(ldrPin, INPUT);
 
 
 }

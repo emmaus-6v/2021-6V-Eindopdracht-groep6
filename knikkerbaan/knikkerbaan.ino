@@ -1,34 +1,37 @@
-const int ledPin =  LED_BUILTIN;
+const int ledPin = 13;
 
-// globale variabelen
-int ledState = LOW;               // status van de LED
-unsigned long millisVorigeVerandering = 0; // bewaard tijd van laatste LED-verandering
-
-// andere constanten
-const long interval = 1000;           // interval in milliseconden
+const int ldrPin = A0;
 
 void setup() {
-  // stel ledpin in als output:
-  pinMode(ledPin, OUTPUT);
+  
+Serial.begin(9600);
+
+pinMode(ledPin, OUTPUT);
+
+pinMode(ldrPin, INPUT);
+
+
 }
 
 void loop() {
-  // tijd van nu
-  unsigned long millisNu = millis();
+  int ldrStatus = analogRead(ldrPin);
 
-  // is de verstreken tijd sinds de laatste verandering langer dan de interval?
-  if (millisNu - millisVorigeVerandering >= interval) {    
-    // bewaar tijdstip van de verandering die we hierna gaan doen
-    millisVorigeVerandering = millisNu;
+  if (ldrStatus <= 100) {
 
-    // zet de status van de LED om
-    if (ledState == LOW) {
-      ledState = HIGH;
-    } else {
-      ledState = LOW;
-    }
+    digitalWrite(ledPin, HIGH);
 
-    // geef de pin de waarde van de status
-    digitalWrite(ledPin, ledState);
+    Serial.print("Its DARK, Turn on the LED : ");
+
+    Serial.println(ldrStatus);
+
+  } 
+  else {
+
+    digitalWrite(ledPin, LOW);
+
+    Serial.print("Its BRIGHT, Turn off the LED : ");
+
+    Serial.println(ldrStatus);
+
   }
 }

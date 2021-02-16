@@ -2,7 +2,7 @@
 
 Datum: 14 oktober 2020
 Leerling: Chimène 
-Uitgevoerd: Taakverdeling van github, server, webapp en planning
+Uitgevoerd: Taakverdeling van github, server, webapp en planning met iedereen gemaakt.
 
 ---
 
@@ -26,7 +26,7 @@ Uitgevoerd: Knikkerbaan gemaakt met Anique in het HT lokaal
 
 Datum: 2 december
 Leerling: Chimène 
-Uitgevoerd: Knikkerbaan thuis afgemaakt
+Uitgevoerd: Knikkerbaan thuis afgemaakt door te schuren en de gootjes vast te maken.
 
 ---
 Datum: 14 december

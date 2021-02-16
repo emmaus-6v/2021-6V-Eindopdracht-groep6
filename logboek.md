@@ -34,39 +34,39 @@ Leerling: Chimène
 Uitgevoerd: Code gezocht voor de servo motor
 
 ---
-Datum: 
-Leerling:
-Uitgevoerd:
+Datum: 25 januari 2021
+Leerling: Chimène
+Uitgevoerd: COde voor de lichtsensor gezocht en aangepast. 
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 27 januari
+Leerling: Chimène
+Uitgevoerd: Github planning bijgewerkt en code gezocht voor de lichtsensor.
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 3 februari
+Leerling: Chimène
+Uitgevoerd: Code voor de lichtsensor kloppend gemaakt en de code in github gezet.
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 8 februari
+Leerling: Chimène
+Uitgevoerd: Code voor de infraroodsensor gezocht op internet.
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 10 februari
+Leerling: Chimène
+Uitgevoerd: Lichtsensor gebouwd op het breadboard en uitgetest in het echt. Sensor werkt.
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 15 Februari
+Leerling: Chimène
+Uitgevoerd: Code gezocht voor de infraroodsensor en de servo motor koppelen met de infraroodsensor zodat de servo afhankelijk is van de sensor.
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 16 februari
+Leerling: Chimène 
+Uitgevoerd: Code voor de infraroodsensor en servo motor kloppend gemaakt en in het echt uitgetest. Code en bouw klopt. 
 
 ---
 Datum:

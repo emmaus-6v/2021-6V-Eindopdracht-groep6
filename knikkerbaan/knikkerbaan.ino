@@ -324,6 +324,63 @@ void loop() {
   
   // hele korte delay om de Arduino niet helemaal gek te maken
   delay(50);
+  
+    // read the state of the sensors value:
+  sensorState = digitalRead(SENSORPIN);
+  sensorState2 = digitalRead(SENSORPIN2);
+  
+  //-------- ledje bij de motor---------------------------------
+  // check if the sensor beam is broken
+  // if it is, the sensorState is LOW:
+  if (sensorState == LOW) {     
+    // turn LED on:
+    digitalWrite(LEDPIN, HIGH);  
+  } 
+  else {
+    // turn LED off:
+    digitalWrite(LEDPIN, LOW); 
+  }
+  
+  if (sensorState && !lastState) {
+    Serial.println("Unbroken");
+    } 
+  
+  //----------motor anticiperen op sensor1 waarde ---------------------
+  if (!sensorState && lastState) {
+    Serial.println("Broken");
+      for (pos = 0; pos <= 90; pos += 1) {                  
+      myservo.write(pos);              
+      delay(10); 
+      }
+      for (pos = 90; pos >= 0; pos -= 1) { 
+      myservo.write(pos);             
+        delay(10);                       
+    }
+  }
+  lastState = sensorState;
+  
+  //---------------neopixel anticiperen op sensor 2---------------------
+  if (sensorState2 && !lastState2) {
+    Serial.println("Unbroken");
+    } 
+ 
+  if (!sensorState2 && lastState2) {
+    Serial.println("Broken");
+      setColor();
+  
+  for (int i=0; i < NUMPIXELS; i++) {
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    
+    pixels.setPixelColor(i, pixels.Color(redColor, greenColor, blueColor));
+    
+    // This sends the updated pixel color to the hardware.
+    pixels.show();
+
+    // Delay for a period of time (in milliseconds).
+    delay(delayval);
+    }  
+  }
+  lastState2 = sensorState2;
 }
 //================ einde loop====================================================
 

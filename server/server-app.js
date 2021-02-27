@@ -175,8 +175,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 // bepaal wat er moet gebeuren bij verzoeken op verschillende paden / routes van je URL:
 // ⬇︎ HIER JE EIGEN AANPASSINGEN MAKEN ⬇︎
 app.get('/', (_request, response) => {response.redirect('index.html'); })
-app.get('/api/serverstatus1', serverstatus1);
-app.get('/api/serverstatus2', serverstatus2);
+app.get('/api/sensorstatus1', sensorstatus1);
+app.get('/api/sensorstatus2', sensorstatus2);
 
 
 // start de server en geef een berichtje in de console dat het gelukt is!
@@ -228,19 +228,19 @@ pool.on('connect', () => console.log('connected to db'));
  * @param response het antwoord dat teruggegeven gaat worden.
  */
 function sensorstatus1(_request, response) {
-  pool.query("INSERT INTO buttonPresses (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
+  pool.query("INSERT INTO sensorstate (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(201).send(`ButtonPress added with ID: ${results.rows[0].id}`);
+    response.status(201).send(`sensorstatus updated with ID: ${results.rows[0].id}`);
   });
 }
 
 function sensorstatus2(_request, response) {
-  pool.query("INSERT INTO buttonPresses (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
+  pool.query("INSERT INTO sensorstate2 (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(201).send(`ButtonPress added with ID: ${results.rows[0].id}`);
+    response.status(201).send(`sensorstatus updated with ID: ${results.rows[0].id}`);
   });
 }

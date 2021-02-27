@@ -69,9 +69,10 @@ Leerling: Chimène
 Uitgevoerd: Code voor de infraroodsensor en servo motor kloppend gemaakt en in het echt uitgetest. Code en bouw klopt. 
 
 ---
-Datum:
-Leerling:
-Uitgevoerd:
+Datum: 27 februari
+Leerling: Chimène
+Uitgevoerd: Code voor de ledstrip getest in het echt.
+Code aangepast om het te perfectioneren en toegevoegd in het gedeelte van de code in github waar alle code bij elkaar komt met de wifi erbij.
 
 ---
 Datum:

@@ -294,16 +294,6 @@ void setup() {
 //==============================loop========================================================
 void loop() {
   
-  //--------------waar is dit voor?---------------------------
-  // controleer of de telTimer 'af moet gaan'
-  if (millis() > statusTimerLaatsteActivering + statusTimerWachtTijd) {
-    // er zijn blijkbaar meer van 1000 milliseconden verstreken
-    // sinds de laatste activering van de telTimer
-    // Verhoog knikkerTeller met 1.
-    // update de tijd van de laatste activering naar NU
-    statusTimerLaatsteActivering = millis();
-  }
-
   //---------------wifitimer-------------------------------------
   // controleer of de wifiTimer 'af moet gaan'
   if (millis() > wifiTimerLaatsteActivering + wifiTimerWachtTijd) {

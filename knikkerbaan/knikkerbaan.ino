@@ -270,19 +270,31 @@ void setup() {
   statusTimerLaatsteActivering = millis();
   wifiTimerLaatsteActivering=  millis();
 
-  // Zet hieronder alle andere dingen die in de setup moeten,
-  // zoals pinMode etc etc.
+  //-----------setup voor led, servo, ledstrip en sensors -------------------------
+  // Initialize the NeoPixel library.
+  pixels.begin();     
 
-
-
-
-
-
-
+  // initialize the LED pin as an output:
+  pinMode(LEDPIN, OUTPUT); 
+  
+  // motor op pin 9
+  myservo.attach(9);
+  
+  // initialize the sensor 1 pin as an input:
+  pinMode(SENSORPIN, INPUT);     
+  digitalWrite(SENSORPIN, HIGH); // turn on the pullup
+  
+  // initialize the sensor 2 pin as an input:
+  pinMode(SENSORPIN2, INPUT);     
+  digitalWrite(SENSORPIN2, HIGH); // turn on the pullup
+  
+  Serial.begin(9600);
 }
 
-
+//==============================loop========================================================
 void loop() {
+  
+  //--------------waar is dit voor?---------------------------
   // controleer of de telTimer 'af moet gaan'
   if (millis() > statusTimerLaatsteActivering + statusTimerWachtTijd) {
     // er zijn blijkbaar meer van 1000 milliseconden verstreken
@@ -290,11 +302,9 @@ void loop() {
     // Verhoog knikkerTeller met 1.
     // update de tijd van de laatste activering naar NU
     statusTimerLaatsteActivering = millis();
-    
-    // geef de baanstatus een random waarde tussen 0 en 10:
-    baanStatus = random(10);
   }
 
+  //---------------wifitimer-------------------------------------
   // controleer of de wifiTimer 'af moet gaan'
   if (millis() > wifiTimerLaatsteActivering + wifiTimerWachtTijd) {
     // er zijn blijkbaar meer van 30000 milliseconden verstreken
@@ -306,10 +316,12 @@ void loop() {
     // tijdens communicatie zetten we de LED even op blauw
     setWiFiLED(0, 0, 255);
     
-    stuurUpdate();
+    //stuur update naar de server
+    stuurUpdate1();
+    stuurUpdate2()
   }
 
-
+ 
   // Je wilt in ieder geval kunnen lezen wat de
   // server als antwoord terugstuurt.
   if (client.connected()) {
@@ -319,15 +331,15 @@ void loop() {
     setWiFiLED(0, 255, 0);
   }
   
-
-
   // hele korte delay om de Arduino niet helemaal gek te maken
   delay(50);
 }
+//================ einde loop====================================================
 
+//========================FUNCTIES=============================================
 
-
-void stuurUpdate() {
+//----------------functie stuurupdate1--------------------------------------------
+void stuurUpdate1() {
   Serial.println("\nStart verbinding met server");
 
   // hier maken we gebruik van het client-object om
@@ -340,7 +352,7 @@ void stuurUpdate() {
     // We sturen nu m.b.v. het client-object de tekst van een HTTP verzoek:
     // 1e regel
     client.print("GET /api/setKnikkerbaanStatus/");
-    client.print(baanStatus);
+    client.print(sensorstate);
     client.println(" HTTP/1.1");
 
     // 2e regel
@@ -362,12 +374,48 @@ void stuurUpdate() {
   }
   else {
     Serial.println("verbinding maken niet gelukt");
-  }
-  
+  } 
 }
 
+//--------------------functie stuurupdate2-----------------------------
+void stuurUpdate2() {
+  Serial.println("\nStart verbinding met server");
 
+  // hier maken we gebruik van het client-object om
+  // de verbinding te maken. Die geeft true of false
+  // terug om aan te geven of het is gelukt.
+  // Het kan even duren voor de verbinding is gemaakt.
+  if (client.connect(server, 443)) {
+    Serial.println("Verbonden met de server. HTTP verzoek wordt verstuurd.");
+    
+    // We sturen nu m.b.v. het client-object de tekst van een HTTP verzoek:
+    // 1e regel
+    client.print("GET /api/setKnikkerbaanStatus/");
+    client.print(sensorstate2);
+    client.println(" HTTP/1.1");
 
+    // 2e regel
+    client.print("Host: 3000-brown-catshark-l4u1rl9i.ws-eu03.gitpod.io ");
+    client.println(server);
+
+    // 3e regel
+    client.println("Connection: close");
+
+    // 4e regel -- moet leeg zijn
+    client.println();
+
+    /* Dat verzoek ziet er dus zo uit als baanstatus de waarde 8 heeft:
+     GET /api/setKnikkerbaanStatus/8 HTTP/1.1
+     Host: 3000-blablabla.gitpod.io
+     Connection: close
+    */
+  }
+  else {
+    Serial.println("verbinding maken niet gelukt");
+  }
+}
+
+//------------------functie checkHTTPResponse-------------------------------------
 void checkHTTPResponse() {
   // controleer of de client data beschikbaar heeft
   // lees deze uit en print ze, net zolang tot er
@@ -387,8 +435,7 @@ void checkHTTPResponse() {
   }
 }
 
-
-
+//-----------------functie checkWifiModule-------------------------------
 void checkWiFiModule() {
   // controleer of er een WiFi module is
   if (WiFi.status() == WL_NO_MODULE) {
@@ -404,8 +451,7 @@ void checkWiFiModule() {
   }
 }
 
-
-
+//--------------------functie verbindMetWifiNetwerk---------------------
 void verbindMetWiFiNetwerk() {
   // probeer contact te maken met het opgegeven WiFi-netwerk:
   // dit gaat met een while-loop, zodat je niet verder kunt zolang
@@ -429,8 +475,7 @@ void verbindMetWiFiNetwerk() {
   printWiFiStatus();
 }
 
-
-
+//-------------------functie printWifiStatus--------------------------
 void printWiFiStatus() {
   // print de naam van het netwerk waarmee je verbonden bent:
   Serial.print("SSID: ");
@@ -448,7 +493,7 @@ void printWiFiStatus() {
   Serial.println(" dBm");
 }
 
-
+//----------------functie setWifiLed---------------------------------
 // stel de kleur van de RGB led in
 void setWiFiLED(uint8_t rood, uint8_t groen, uint8_t blauw) {
   WiFiDrv::pinMode(25, OUTPUT);

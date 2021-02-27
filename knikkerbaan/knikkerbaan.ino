@@ -341,7 +341,7 @@ void stuurUpdate1() {
     
     // We sturen nu m.b.v. het client-object de tekst van een HTTP verzoek:
     // 1e regel
-    client.print("GET /api/setKnikkerbaanStatus/");
+    client.print("GET /api/sensorstatus1");
     client.print(sensorstate);
     client.println(" HTTP/1.1");
 
@@ -380,7 +380,7 @@ void stuurUpdate2() {
     
     // We sturen nu m.b.v. het client-object de tekst van een HTTP verzoek:
     // 1e regel
-    client.print("GET /api/setKnikkerbaanStatus/");
+    client.print("GET /api/sensorstatus2");
     client.print(sensorstate2);
     client.println(" HTTP/1.1");
 

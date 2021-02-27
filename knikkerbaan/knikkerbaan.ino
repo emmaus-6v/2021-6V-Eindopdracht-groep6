@@ -75,7 +75,7 @@ void loop(){
 
 #define PIN 2	 // input pin Neopixel is attached to
 
-#define NUMPIXELS 12 // number of neopixels in strip
+#define NUMPIXELS 20 // number of neopixels in strip
 
 #define SENSORPIN2 12 // tweede ir sensor
  
@@ -99,7 +99,8 @@ int sensorState2 = 0, lastState2 =0;
 //===============================SETUP=========================================
 void setup() {
   // Initialize the NeoPixel library.
-  pixels.begin();     
+  pixels.begin();   
+  pixels.setBrightness(64); 
 
   // initialize the LED pin as an output:
   pinMode(LEDPIN, OUTPUT); 

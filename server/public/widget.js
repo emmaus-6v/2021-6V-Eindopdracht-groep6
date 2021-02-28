@@ -1,25 +1,20 @@
+=============================VARIABELEN===============================
 var achtergrondPlaatje;
 var laatsteUpdateTimeStamp;
-var button;
-var numberOfButtonPresses = 0;
+var sensorState1;
+var f = createFont("fantasy");
+var sensor1 = "niet doorbroken";
+var sensor2 = "niet doorbroken";
+var aantalKnikkers = 0;
 
-/**
- * preload
- * deze functie wordt als eerste javascriptfunctie uitgevoerd,
- * dus zelfs nog vóór setup() !
- * Gebruik deze functie om plaatjes van de server te laten laden
- * door de browser die je widget opent
- */
+
+==============================PRELOAD==================================
 function preload() {
-  achtergrondPlaatje = loadImage('images/voorbeeld.jpg');
+  achtergrondPlaatje = loadImage('images/janken.jpg');
 }
 
 
-/**
- * checkForDatabaseUpdate
- * Controleert of de database wijzingen heeft waarvan wij nog niet weten.
- * Verdere actie vereist bij reponse "Update needed"
- */
+======================DATABASE UPDATE CHECK=========================
 function checkForDatabaseChanges() {
   // zet het serverrequest in elkaar
   var request = new XMLHttpRequest();
@@ -30,7 +25,7 @@ function checkForDatabaseChanges() {
         console.log("Server geeft aan dat de database een update heeft die widget nog niet heeft");
 
         // roep ander update functie(s) aan:
-        getTotalPresses();
+        getSensorState();
       }
       else {
         // je kunt de code hieronder aanzetten, maar krijgt dan wel iedere seconde een melding
@@ -47,19 +42,20 @@ function checkForDatabaseChanges() {
   request.send()
 }
 
+
+============================SENSOR SATUS===============================
 /**
- * getTotalPresses
- * Vraagt het totaal aantal buttonPresses op
+ * Vraagt senasorstatus op
  */
-function getTotalPresses() {
+function getSensorState() {
   // zet het serverrequest in elkaar
   var request = new XMLHttpRequest()
-  request.open('GET', '/api/getTotalPresses', true)
+  request.open('GET', '/api/sensorstate', true)
   request.onload = function () {
     var data = JSON.parse(this.response);
     if (request.status >= 200 && request.status < 400) {
-      console.log(`Totaal aantal buttonPresses = ${data.totalbuttonpresses} `);
-      numberOfButtonPresses = data.totalbuttonpresses;
+      console.log(`Status van sensor 1 = ${data.sensorstate} `);
+      sensor1 = "???";
       var newTimeStamp = new Date(data.lasttimestamp).getTime()+1;
 
       // update indien nodig de timestamp
@@ -79,58 +75,61 @@ function getTotalPresses() {
 }
 
 
-function buttonPressed() {
-  // zet het serverrequest in elkaar
-  var request = new XMLHttpRequest()
-  request.open('GET', '/api/addButtonPress', true)
-  request.onload = function () {
-    if (request.status >= 200 && request.status < 400) {
-      console.log('ButtonPress doorgegeven aan server');
+function Sensor1(){
+    if (sensor1 === "doorbroken"){
+        fill(180, 40, 40);        
+        text("SENSOR 1:  doorbroken", 15, 140);
     }
-    else {
-        console.log("bleh, server reageert niet zoals gehoopt");
-        console.log(this.response);
-      }
-  }
+    else{
+        fill(40, 130, 40);
+        text("SENSOR 1:  niet doorbroken", 15, 140);
+    }
+}
 
-  // verstuur het request
-  request.send()
+function Sensor2() {
+    if (sensor2 === "doorbroken"){
+        fill(180, 40, 40);
+        text("SENSOR 2:  doorbroken", 15, 165);
+    }
+    else{
+        fill(40, 130, 40);
+        text("SENSOR 2:  niet doorbroken", 15, 165);
+    }
 }
 
 
-/**
- * setup
- * de code in deze functie wordt eenmaal uitgevoerd,
- * als p5js wordt gestart
- */
+====================================AANTAL KNIKKERS======================================
+
+
+========================SETUP========================
 function setup() {
   // Maak het canvas van je widget
   createCanvas(480, 200);
 
-  button = createButton('Klik op deze knop!');
-  button.position(120, 15);
-  button.mouseClicked(buttonPressed);
-
-
   // zet timeStamp op lang geleden zodat we alle recente info binnenkrijgen
   laatsteUpdateTimeStamp = new Date().setTime(0);
 
-  // we vragen elke seconde of er iets is veranderd
-  setInterval(checkForDatabaseChanges, 1000);
+  // we vragen elke 2 seconde of er iets is veranderd
+  setInterval(checkForDatabaseChanges, 2000);
 }
 
 
-/**
- * draw
- * de code in deze functie wordt meerdere keren per seconde
- * uitgevoerd door de p5 library, nadat de setup functie klaar is
- */
+=========================DRAW==========================
 function draw() {
-  // schrijf hieronder de code van je widget
-  // nu wordt slechts een voorbeeld als plaatje getoond
-  // verwijder deze achtergrond en creëer je eigen widget
-
   image(achtergrondPlaatje, 0, 0, 480, 200);
-  fill(255, 255, 255);
-  text("Aantal keer geklikt:" + numberOfButtonPresses, 250, 30);
+
+  textFont(f, 25);
+  fill(0, 0, 0);
+  text("KNIKKERBAAN GROEP 6", 15, 15, 500, 500);
+    
+  textSize(15);
+  text("AANTAL LANGSGEKOMEN KNIKKERS:", 15, 65, 500, 500);
+  text(aantalknikkers, 15, 90, 500, 500);
+  Sensor1();    
+  Sensor2();
+    
+  stroke(0, 0, 0);
+  fill(110, 146, 255);
+  ellipse(mouseX, mouseY, 15, 15);
 }
+

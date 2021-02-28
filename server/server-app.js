@@ -150,10 +150,17 @@ pool.on('connect', () => console.log('connected to db'));
   });
 }
 
-=================================AAnpassingen die ik niet lan checken===============================================
+
+
+
+
+=============================================================================================================================
+=================================AANPASSINGEN (DIE NOG GECHEKCT MOETEN WORDEN)===============================================
+=============================================================================================================================
+
 
 /**********************************************/
-/* -------- Algemeen server gedeelte -------- */
+/* -------- Algemeen server gedeelte -------- */  
 /**********************************************/
 const express = require('express')
 const path = require('path');
@@ -172,18 +179,25 @@ app.use(
 app.use(express.static(path.join(__dirname, '/public')));
 
 
+
+/************************************************************************************/
+//===================== ⬇︎ ⬇︎ ⬇︎ EIGEN AANPASSINGEN ⬇︎ ⬇︎ ⬇︎ ==============================
+
 // bepaal wat er moet gebeuren bij verzoeken op verschillende paden / routes van je URL:
-// ⬇︎ HIER JE EIGEN AANPASSINGEN MAKEN ⬇︎
 app.get('/', (_request, response) => {response.redirect('index.html'); })
+app.get('/api/checkchanges/:widgetTimeStamp', checkChanges);
+app.get('/api/getTotalKnikkers', getTotalKnikkers);
 app.get('/api/sensorstatus1', sensorstatus1);
 app.get('/api/sensorstatus2', sensorstatus2);
+
+/************************************************************************************/
+
 
 
 // start de server en geef een berichtje in de console dat het gelukt is!
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
-
 
 
 
@@ -216,17 +230,52 @@ pool.on('connect', () => console.log('connected to db'));
 
 
 
-// Functies die bewerkingen op de database uitvoeren:
-// ⬇︎ HIER JE EIGEN AANPASSINGEN MAKEN ⬇︎
+/************************************************************************************/
+//===================== ⬇︎ ⬇︎ ⬇︎ EIGEN AANPASSINGEN ⬇︎ ⬇︎ ⬇︎ ==============================
 
-/**
- * addButtonPress
+// Functies die bewerkingen op de database uitvoeren:
+
+/*
+ * checkChanges
  * 
- * voegt een nieuwe row toe aan tabel "buttonPresses"
- * en geeft de id van de nieuwe regel terug in de reponse
+ * checkt of er sinds de in het request meegegeven timestamp
+ * wijzigingen zijn gedaan in de database en geeft dit terug
  * @param _request het webrequest dat deze bewerking startte
  * @param response het antwoord dat teruggegeven gaat worden.
  */
+
+function checkChanges(_request, response) {
+  var lastWidgetChange = new Date();
+  lastWidgetChange.setTime(_request.params.widgetTimeStamp);
+  pool.query(`SELECT *
+                FROM (SELECT tijd FROM sensorstate) AS alleTijden
+                WHERE tijd > $1`,
+                [lastWidgetChange], (error, results) => {
+                  if (error) {
+                    throw error;
+                  }
+
+                  if (results.rowCount > 0) {
+                    response.status(200).send("Update needed");
+                  }
+                  else {
+                    response.status(200).send("No update needed");
+                  }
+                  
+                });
+}
+
+
+function getTotalKnikkers(_request, response) {
+  pool.query("SELECT COUNT(*) AS totalKnikkers, MAX(tijd) as lastTimeStamp FROM sensorstate;", (error, results) => {
+    if(error) {
+      throw error;
+    }
+    response.status(200).json(results.rows[0]);
+  });
+}
+
+
 function sensorstatus1(_request, response) {
   pool.query("INSERT INTO sensorstate (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
     if (error) {
@@ -244,3 +293,5 @@ function sensorstatus2(_request, response) {
     response.status(201).send(`sensorstatus updated with ID: ${results.rows[0].id}`);
   });
 }
+
+/************************************************************************************/

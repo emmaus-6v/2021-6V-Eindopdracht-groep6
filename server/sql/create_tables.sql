@@ -12,14 +12,14 @@ CREATE TABLE buttonPresses (
 
 CREATE TABLE sensorstate (
   ID SERIAL PRIMARY KEY,
-  sensorstate BOOLEAN,
+  status BOOLEAN,
   tijd TIMESTAMP WITH TIME ZONE NOT NULL,
   opmerking VARCHAR(128)
 );
 
 CREATE TABLE sensorstate2 (
   ID SERIAL PRIMARY KEY,
-  sensorstate2 BOOLEAN,
+  status BOOLEAN,
   tijd TIMESTAMP WITH TIME ZONE NOT NULL,
   opmerking VARCHAR(128)
 );

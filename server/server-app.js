@@ -187,8 +187,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.get('/', (_request, response) => {response.redirect('index.html'); })
 app.get('/api/checkchanges/:widgetTimeStamp', checkChanges);
 app.get('/api/getTotalKnikkers', getTotalKnikkers);
-app.get('/api/sensorstatus1', sensorstatus1);
-app.get('/api/sensorstatus2', sensorstatus2);
+app.get('/api/sensorstatus1/:status', sensorstatus1);
+app.get('/api/sensorstatus2/:status', sensorstatus2);
 
 /************************************************************************************/
 
@@ -277,7 +277,8 @@ function getTotalKnikkers(_request, response) {
 
 
 function sensorstatus1(_request, response) {
-  pool.query("INSERT INTO sensorstate (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
+  const sensorstatus = parsInt(_request.params.sensorstatus);
+  pool.query("INSERT INTO sensorstate (status, tijd) VALUES ($1, CURRENT_TIMESTAMP) RETURNING ID", [sensorstatus], (error, results) => {
     if (error) {
       throw error;
     }
@@ -286,7 +287,8 @@ function sensorstatus1(_request, response) {
 }
 
 function sensorstatus2(_request, response) {
-  pool.query("INSERT INTO sensorstate2 (tijd) VALUES (CURRENT_TIMESTAMP) RETURNING ID", (error, results) => {
+  const sensorstatus2 = parsInt(_request.params.sensorstatus2);
+  pool.query("INSERT INTO sensorstate2 (status, tijd) VALUES ($1, CURRENT_TIMESTAMP) RETURNING ID", [sensorstatus2], (error, results) => {
     if (error) {
       throw error;
     }

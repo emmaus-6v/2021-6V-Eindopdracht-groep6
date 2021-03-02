@@ -2,7 +2,6 @@
 var achtergrondPlaatje;
 var laatsteUpdateTimeStamp;
 var sensorState1;
-var f = createFont("fantasy");
 var sensor1 = "niet doorbroken";
 var sensor2 = "niet doorbroken";
 var aantalKnikkers = 0;
@@ -10,7 +9,7 @@ var aantalKnikkers = 0;
 
 //==============================PRELOAD==================================
 function preload() {
-  achtergrondPlaatje = loadImage('images/janken.jpg');
+  achtergrondPlaatje = loadImage('images/achtergrond.jpg');
 }
 
 
@@ -116,9 +115,9 @@ function setup() {
 
 //=========================DRAW==========================
 function draw() {
- // image(achtergrondPlaatje, 0, 0, 480, 200);
+ image(achtergrondPlaatje, 0, 0, 480, 200);
 
-  textFont(f, 50);
+  textSize(25);
   fill(0, 0, 0);
   text("KNIKKERBAAN GROEP 6", 15, 15, 500, 500);
     
@@ -132,4 +131,5 @@ function draw() {
   fill(110, 146, 255);
   ellipse(mouseX, mouseY, 15, 15);
 }
+
 

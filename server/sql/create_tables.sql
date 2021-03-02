@@ -23,3 +23,10 @@ CREATE TABLE sensorstate2 (
   tijd TIMESTAMP WITH TIME ZONE NOT NULL,
   opmerking VARCHAR(128)
 );
+
+CREATE TABLE totaalKnikkers (
+  ID SERIAL PRIMARY KEY,
+  totaal INTEGER,
+  tijd TIMESTAMP WITH TIME ZONE NOT NULL,
+  opmerking VARCHAR(128)
+);

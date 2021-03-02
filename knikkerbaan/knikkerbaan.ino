@@ -85,11 +85,11 @@ void loop() {
     Serial.println("Broken");
       for (pos = 0; pos <= 55; pos += 1) {                  
       myservo.write(pos);              
-      delay(10); 
+      delay(3); 
       }
       for (pos = 55; pos >= 0; pos -= 1) { 
       myservo.write(pos);             
-        delay(10);                       
+        delay(3);                       
     }
   }
   lastState = sensorState;
@@ -290,11 +290,11 @@ void loop() {
     Serial.println("Broken");
       for (pos = 0; pos <= 55; pos += 1) {                  
       myservo.write(pos);              
-      delay(10); 
+      delay(3); 
       }
       for (pos = 55; pos >= 0; pos -= 1) { 
       myservo.write(pos);             
-        delay(10);                       
+        delay(3);                       
     }
     totalKnikkers = totalKnikkers + 1;
   }

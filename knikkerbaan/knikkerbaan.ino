@@ -147,8 +147,8 @@ void setColor(){
  
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-char ssid[] = "naam-van-je-wifi-netwerk";    // naam van het WiFi-netwerk. Dat heet SSID
-char pass[] = "wachtw00rd";                  // WiFi-wachtwoord
+char ssid[] = "Nacho Wifi";    // naam van het WiFi-netwerk. Dat heet SSID
+char pass[] = "FreeWifi";                  // WiFi-wachtwoord
 
 int status = WL_IDLE_STATUS;
 

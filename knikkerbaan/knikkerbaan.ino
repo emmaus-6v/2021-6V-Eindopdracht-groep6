@@ -147,8 +147,8 @@ void setColor(){
  
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-char ssid[] = "Nacho Wifi";    // naam van het WiFi-netwerk. Dat heet SSID
-char pass[] = "FreeWifi";                  // WiFi-wachtwoord
+char ssid[] = "naam van wifi";    // naam van het WiFi-netwerk. Dat heet SSID
+char pass[] = "wachtwoord";                  // WiFi-wachtwoord
 
 int status = WL_IDLE_STATUS;
 
@@ -326,6 +326,12 @@ void loop() {
 //================ einde loop====================================================
 
 //========================FUNCTIES=============================================
+//=======================kleur ledstrip========================================
+void setColor(){
+  redColor = random(0, 255);
+  greenColor = random(0,255);
+  blueColor = random(0, 255);
+}
 
 //----------------functie stuurupdate1--------------------------------------------
 void stuurUpdate1() {

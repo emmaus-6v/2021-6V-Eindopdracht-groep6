@@ -18,7 +18,7 @@
  
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-int delayval = 100; // timing delay in milliseconds
+int delayval = 50; // timing delay in milliseconds
 
 // voor het random effect van de neopixel
 int redColor = 0;
@@ -83,11 +83,11 @@ void loop() {
   //----------motor anticiperen op sensor1 waarde ---------------------
   if (!sensorState && lastState) {
     Serial.println("Broken");
-      for (pos = 0; pos <= 90; pos += 1) {                  
+      for (pos = 0; pos <= 55; pos += 1) {                  
       myservo.write(pos);              
       delay(10); 
       }
-      for (pos = 90; pos >= 0; pos -= 1) { 
+      for (pos = 55; pos >= 0; pos -= 1) { 
       myservo.write(pos);             
         delay(10);                       
     }
@@ -159,7 +159,7 @@ char server[] = "3000-brown-catshark-l4u1rl9i.ws-eu03.gitpod.io";
 // en antwoord terug kan krijgen.
 WiFiSSLClient client;
 
-int delayval = 100; // timing delay in milliseconds
+int delayval = 50; // timing delay in milliseconds
 
 // voor het random effect van de neopixel
 int redColor = 0;

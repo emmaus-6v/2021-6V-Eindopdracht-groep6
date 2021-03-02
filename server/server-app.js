@@ -186,7 +186,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // bepaal wat er moet gebeuren bij verzoeken op verschillende paden / routes van je URL:
 app.get('/', (_request, response) => {response.redirect('index.html'); })
 app.get('/api/checkchanges/:widgetTimeStamp', checkChanges);
-app.get('/api/getTotalKnikkers', getTotalKnikkers);
+app.get('/api/getTotalKnikkers/:totaal', getTotalKnikkers);
 app.get('/api/sensorstatus1/:status', sensorstatus1);
 app.get('/api/sensorstatus2/:status', sensorstatus2);
 
@@ -265,16 +265,15 @@ function checkChanges(_request, response) {
                 });
 }
 
-
 function getTotalKnikkers(_request, response) {
-  pool.query("SELECT COUNT(*) AS totalKnikkers, MAX(tijd) as lastTimeStamp FROM sensorstate;", (error, results) => {
-    if(error) {
+  const totaalAantalKnikkers = parsInt(_request.params.totaalAantalKnikkers);
+  pool.query("INSERT INTO aantalknikkers (totaal, tijd) VALUES ($1, CURRENT_TIMESTAMP) RETURNING ID", [totaalAantalKnikkers], (error, results) => {
+    if (error) {
       throw error;
     }
-    response.status(200).json(results.rows[0]);
+    response.status(201).send(`totaal aantal knikkers updated with ID: ${results.rows[0].id}`);
   });
 }
-
 
 function sensorstatus1(_request, response) {
   const sensorstatus = parsInt(_request.params.sensorstatus);

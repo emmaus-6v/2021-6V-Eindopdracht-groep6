@@ -236,6 +236,7 @@ int pos = 0;
 // ir sensors variabelen
 int sensorState = 0, lastState=0;
 int sensorState2 = 0, lastState2 =0;
+int totalKnikkers = 0;
 
 // statusuitlezen 
 long statusTimerLaatsteActivering = 0;
@@ -309,7 +310,8 @@ void loop() {
     
     //stuur update naar de server
     stuurUpdate1();
-    stuurUpdate2()
+    stuurUpdate2();
+    stuurUpdate2();
   }
 
  
@@ -356,6 +358,7 @@ void loop() {
       myservo.write(pos);             
         delay(10);                       
     }
+    totalKnikkers = totalKnikkers + 1;
   }
   lastState = sensorState;
   
@@ -462,6 +465,45 @@ void stuurUpdate2() {
     Serial.println("verbinding maken niet gelukt");
   }
 }
+
+//--------------------functie stuurupdate3-----------------------------
+void stuurUpdate3() {
+  Serial.println("\nStart verbinding met server");
+
+  // hier maken we gebruik van het client-object om
+  // de verbinding te maken. Die geeft true of false
+  // terug om aan te geven of het is gelukt.
+  // Het kan even duren voor de verbinding is gemaakt.
+  if (client.connect(server, 443)) {
+    Serial.println("Verbonden met de server. HTTP verzoek wordt verstuurd.");
+    
+    // We sturen nu m.b.v. het client-object de tekst van een HTTP verzoek:
+    // 1e regel
+    client.print("GET /api/getTotalKnikkers/");
+    client.print(totalKnikkers);
+    client.println(" HTTP/1.1");
+
+    // 2e regel
+    client.print("Host: 3000-brown-catshark-l4u1rl9i.ws-eu03.gitpod.io ");
+    client.println(server);
+
+    // 3e regel
+    client.println("Connection: close");
+
+    // 4e regel -- moet leeg zijn
+    client.println();
+
+    /* Dat verzoek ziet er dus zo uit als baanstatus de waarde 8 heeft:
+     GET /api/setKnikkerbaanStatus/8 HTTP/1.1
+     Host: 3000-blablabla.gitpod.io
+     Connection: close
+    */
+  }
+  else {
+    Serial.println("verbinding maken niet gelukt");
+  }
+}
+
 
 //------------------functie checkHTTPResponse-------------------------------------
 void checkHTTPResponse() {

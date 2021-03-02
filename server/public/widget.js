@@ -1,4 +1,4 @@
-=============================VARIABELEN===============================
+//=============================VARIABELEN===============================
 var achtergrondPlaatje;
 var laatsteUpdateTimeStamp;
 var sensorState1;
@@ -8,13 +8,13 @@ var sensor2 = "niet doorbroken";
 var aantalKnikkers = 0;
 
 
-==============================PRELOAD==================================
+//==============================PRELOAD==================================
 function preload() {
   achtergrondPlaatje = loadImage('images/janken.jpg');
 }
 
 
-======================DATABASE UPDATE CHECK=========================
+//======================DATABASE UPDATE CHECK=========================
 function checkForDatabaseChanges() {
   // zet het serverrequest in elkaar
   var request = new XMLHttpRequest();
@@ -43,7 +43,7 @@ function checkForDatabaseChanges() {
 }
 
 
-============================SENSOR SATUS===============================
+//============================SENSOR SATUS===============================
 /**
  * Vraagt senasorstatus op
  */
@@ -98,10 +98,10 @@ function Sensor2() {
 }
 
 
-====================================AANTAL KNIKKERS======================================
+//====================================AANTAL KNIKKERS======================================
 
 
-========================SETUP==========================
+//========================SETUP==========================
 function setup() {
   // Maak het canvas van je widget
   createCanvas(480, 200);
@@ -114,11 +114,11 @@ function setup() {
 }
 
 
-=========================DRAW==========================
+//=========================DRAW==========================
 function draw() {
-  image(achtergrondPlaatje, 0, 0, 480, 200);
+ // image(achtergrondPlaatje, 0, 0, 480, 200);
 
-  textFont(f, 25);
+  textFont(f, 50);
   fill(0, 0, 0);
   text("KNIKKERBAAN GROEP 6", 15, 15, 500, 500);
     

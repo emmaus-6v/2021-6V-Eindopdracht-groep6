@@ -267,7 +267,7 @@ function checkChanges(_request, response) {
 
 function getTotalKnikkers(_request, response) {
   const totaalAantalKnikkers = parsInt(_request.params.totaalAantalKnikkers);
-  pool.query("INSERT INTO aantalknikkers (totaal, tijd) VALUES ($1, CURRENT_TIMESTAMP) RETURNING ID", [totaalAantalKnikkers], (error, results) => {
+  pool.query("INSERT INTO aantalKnikkers (totaal, tijd) VALUES ($1, CURRENT_TIMESTAMP) RETURNING ID", [totaalAantalKnikkers], (error, results) => {
     if (error) {
       throw error;
     }

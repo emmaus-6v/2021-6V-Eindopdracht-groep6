@@ -4,7 +4,7 @@
 ---
 
 ## Inleiding
-Wij zijn Anais, Eline, Chimène en Anique en wij hebben de afgelopen maanden gewerkt aan deze knikkerbaan als eindopdracht. In dit project maken we gebruik van verschillende computertalen waaronder: javascript, SQL en C++. De verdeling was ongeveer zo: de knikkerbaan zelf is gemaakt door Chimène met hulp van Anique, de arduino door Chimène en Eline, de server door Eline en Anais, de widget door Anais met hulp van Anique en het verslag is geschreven door Anique met toevoegingen van de rest (de persoonlijke reflectie). De samenwerking verliep over het algemeen goed en soepel omdat we deze indeling al van te voren gemaakt hadden.
+Wij zijn Anais, Eline, Chimène en Anique en wij hebben de afgelopen maanden gewerkt aan deze knikkerbaan als eindopdracht. In dit project maken we gebruik van verschillende computertalen waaronder: javascript, SQL en C++. De verdeling was ongeveer zo: de knikkerbaan zelf is gemaakt door Chimène met hulp van Anique, de arduino door Chimène en Eline, de server door Eline en Anais, de widget door Anais en Anique en het verslag is geschreven door Anique met toevoegingen van de rest (de persoonlijke reflectie). De samenwerking verliep over het algemeen goed en soepel omdat we deze indeling al van te voren gemaakt hadden.
 
 
 
@@ -26,13 +26,13 @@ Onze opdracht is als volgt gepland:
 
 
 ## Technische verantwoording
-Ons communicatieprotocol werkt zo:
+De communicatie ging over het algemeen heel goed. Het grootste gedeelte hebben we afgesproken in de les of in de whatsappgroep die we aangemaakt hadden. Iedereen werkte aan hun stukje als ze daar aan toe waren en we hadden geen strikte deadlines. Er waren maar een paar dingen die in de weg zaten. Anais heeft thuis bijvoorbeeld geen computer of laptop waardoor ze er alleen aan kon werken als ze naar een van opns kon komen. In combinatie met de avondklok was dit wel een goed excuus om onze ouders over te halen om te logeren. Zo hebben Anique en Anais samen bij Anique gezellig een avondje aan de widget gewerkt (daardoor staat alles van de widget ook onder anique's naam).
 
 
 
 ## Reflectie
 #### Anique
-Ik vond...
+Ik vond de odracht eigenlijk best leuk om te maken. In het begin vond ik het nogal moeilijk omdat ik niet helemaal doorhad wat precies de bedoeling was, maar na een tijdje kreeg ik het door. De samenwerking vond ik ook best goed. Sommige begonnen wel eerder dan anderen waardoor niet alles tegelijk af was, maar ook dat is goed gekomen. Over het algemeen kijk ik zeer positief terug op de opdracht omdat het reuze interresant was.
 
 #### Eline
 Ik kijk terug op...

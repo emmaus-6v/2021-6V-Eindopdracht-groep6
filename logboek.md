@@ -3,35 +3,28 @@
 Datum: 14 oktober 2020
 Leerling: Anaïs & Anique & Chimène & Eline
 Uitgevoerd: Taakverdeling van github, server, webapp en planning gemaakt.
-Leerling: Chimène 
-Uitgevoerd: Taakverdeling van github, server, webapp en planning met iedereen gemaakt.
 
 ---
 
 Datum: 26 oktober
 Leerling: Anaïs & Chimène
 Uitgevoerd: Code voor lichtsensor gezocht.
-Leerling: Chimène
-Uitgevoerd: Code voor lichtsensor gezocht met Anaïs
 
 ---
 
 Datum: 16 november
 Leerling: Chimène
 Uitgevoerd: Code voor lichtsensor gezocht.
-Uitgevoerd: Code voor lichtsensor gezocht
 
 ---
 
 Datum: 27 november
 Leerling: Anique & Chimène
 Uitgevoerd: Knikkerbaan gemaakt in het HT lokaal.
-Leerling: Chimène
-Uitgevoerd: Knikkerbaan gemaakt met Anique in het HT lokaal
 
 ---
 
-@@ -68,42 +68,26 @@ Datum: 16 februari
+Datum: 16 februari
 Leerling: Chimène 
 Uitgevoerd: Code voor de infraroodsensor en servo motor kloppend gemaakt en in het echt uitgetest. Code en bouw klopt. 
 
@@ -59,6 +52,8 @@ Uitgevoerd: Start met het maken van de code van de widget en een deel van de ser
 Datum: 28 februari
 Leerling: Anaïs & Anique
 Uitgevoerd: Code van de widget afgemaakt (behalve de verbinding met de server).
+
+---
 Datum: 1 maart
 Leerling: Chimène
 Uitgevoerd: Knikkerbaan in elkaar gezet met de arduino erbij en getest of alles werkte. Alles deed het goed
@@ -76,6 +71,3 @@ Leerling: Anaïs & Anique
 Uitgevoerd: Finishing touch aan de code van de widget
 Leerling: Anique & Chimène
 Uitgevoerd: presenteren van de knikkerbaan.
-Datum:
-Leerling:
-Uitgevoerd:

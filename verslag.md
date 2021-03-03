@@ -15,14 +15,14 @@ Ons idee was om een knikkerbaan te maken met lampjes erop. In het begin waren we
 ## Planning en daadwerkelijke uitvoering
 Onze opdracht is als volgt gepland:
 
+### sprint 1
+In deze sprint hebben we eigenlijk niks interresants gedaan behalve een grove planning en een verdeling maken. Dit hebben we in de eerste paar lessen gedaan, we hebben de rollen toen verdeeld op een manier zodat iedereen kon doen waar ze het beste in zijn.
+### sprint 2
+In de tweede sprint was eigenlijk vooral Chimène actief. Zij begon namelijk vroeg, zo hadden we nog voor de kerstvakantie de knikkerbaan af. Chimène heeft toen eerst sammen met Anique in het handvaardigheidslokaal een begin gemaakt, en heeft hem daarna thuis zelf  afgemaakt. Ook heeft zij zelf aan haar stukje gewerkt toen.
 ### sprint 3
-
+In de derde sprint hebben we het meeste gedaan. Gedurenxde de hele voorjaarsvakantie heeft iedereen keihard gewerkt aan het project. Aan het eide van de vakantie was alles zo goed als bijna af. Er moesten daarna alleen nog kleine dingen aangepast worden. 
 ### sprint 4
-
-### sprint 5
-
-### sprint 6
-
+In de laatste sprint moesten er alleen nog de puntjes op de i worden gezet. Het verslag en het logboek zijn toen ook af gekomen. Ook hebben Anique en Chimene op de laatste dag ons eindresultaat aan meneer cammeraat laten zien.
 
 
 ## Technische verantwoording

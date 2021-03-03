@@ -26,7 +26,7 @@ Onze opdracht is als volgt gepland:
 
 
 ## Technische verantwoording
-De communicatie ging over het algemeen heel goed. Het grootste gedeelte hebben we afgesproken in de les of in de whatsappgroep die we aangemaakt hadden. Iedereen werkte aan hun stukje als ze daar aan toe waren en we hadden geen strikte deadlines. Er waren maar een paar dingen die in de weg zaten. Anais heeft thuis bijvoorbeeld geen computer of laptop waardoor ze er alleen aan kon werken als ze naar een van opns kon komen. In combinatie met de avondklok was dit wel een goed excuus om onze ouders over te halen om te logeren. Zo hebben Anique en Anais samen bij Anique gezellig een avondje aan de widget gewerkt (daardoor staat alles van de widget ook onder anique's naam).
+De communicatie ging over het algemeen heel goed. Het grootste gedeelte hebben we afgesproken in de les of in de whatsappgroep die we aangemaakt hadden. Iedereen werkte aan hun eigen stukjes als ze daar aan toe waren en we hadden geen strikte deadlines. Er waren maar een paar dingen die in de weg zaten. Anais heeft thuis bijvoorbeeld geen computer of laptop waardoor ze er alleen aan kon werken als ze naar een van ons kon komen. In combinatie met de avondklok was dit wel een goed excuus om onze ouders over te halen om te logeren. Zo hebben Anique en Anais samen bij Anique gezellig een avondje aan de widget gewerkt (daardoor staat alles van de widget ook onder Anique's naam en de server onder alleen die van Eline). Ook was het af en toe moeilijk om samen te werken omdat we niet met zn alle af konden spreken. Ondanks dit en het feit dat we geen strikte deadlines hadden, is alles toch goed verlopen.
 
 
 
@@ -46,3 +46,4 @@ Ik vond onze opdracht heel leuk om te maken. Ik heb veel plezier gehad met het s
 
 
 ## Slot
+Ondanks een paar hobbels ging het maken van dit project dus best soepel en zijn we allemaal erg blij met het eindresultaat. Het enige wat we misschien beter hadden kunnen doen is eerder beginnen.
